@@ -1,6 +1,6 @@
 allprojects {
-	version = "0.0.18-SNAPSHOT"
-    group = 'com.github.eitsopensource'
+	version = "1.0.0-RELEASE"
+    group = 'com.github.victorblq'
 
     repositories {
         jcenter()
