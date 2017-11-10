@@ -75,6 +75,7 @@ public class SyncResourceConfiguration
         //configure the default objectMapper
         this.objectMapper.configure( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
         this.objectMapper.configure( SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true );
+        this.objectMapper.configure( DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false);
         this.objectMapper.setSerializationInclusion( JsonInclude.Include.NON_NULL );//nao serializa o json com null
         this.objectMapper.enableDefaultTypingAsProperty( ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, "@type" );
     }
