@@ -1,52 +1,23 @@
-# eits-syncer
+# eits-syncer-datagran
 
-A simple sync mechanics to client in Android or iOS to servers in Java, Ruby.
+A fork of: https://github.com/eitsopensource/eits-syncer used in Datagran mobile application.
 
-### Android setup and usage (nosql style)
-A basic setup would be like:
+# Change Log
 
-    public void setup()
-    {
-        //if the server needs authentication
-        Syncer.withCredentials("user@email.com", "admin");
-        //the host is mandatory
-        Syncer.withURL("http://myhost:8080/api");
-    }
-    
-Using entity classes annoted via ORMLite/JPA, you can:
+##1.0.0-RELEASE
+- Remove the auto-sync functionality when inserting, updating and deleting revisions.
+- Added a construtor in Watcher class for use Observer to monitor the syncronizing process
+- Added methods to QueryRevisionService class for improve the querying system
+    - `public IQueryRevisionService where( String field, Object value, String operator )` to use custom operators.
+    - `public IQueryRevisionService where( String field )` to use with operators methods (explained in sequence).
+    - `public IQueryRevisionService eq( Object value )` operator method that compares if value is equals.
+    - `public IQueryRevisionService gt( Object value )` operator method that compares if value is greater than.
+    - `public IQueryRevisionService lt( Object value )` operator method that compares if value is lower than.
+    - `public IQueryRevisionService goe( Object value )` operator method that compares if value is greater or equals.
+    - `public IQueryRevisionService loe( Object value )` operator method that compares if value is lower or equals.
+    - `public IQueryRevisionService castAs( Object field, Srting castAs )` used to cast field values. See: [SQLite](https://sqlite.org/lang_expr.html).
+    - `private Object processValue ( Object value )` used to process values passed to where methods.
+- Added `SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true` to the ObjectMapper configuration.
 
-    Syncer.forEntity(Customer.class).insert( customer );
-    Syncer.forEntity(Customer.class).update( customer );
-    Syncer.forEntity(Customer.class).save( customer );
-    Syncer.forEntity(Customer.class).remove( 1L );
-    Syncer.forEntity(Customer.class).findById( 1L );
-    Syncer.forEntity(Plant.class).queryBuilder();
-    
-    
-### Java Server Contract
-Your java server must implements the interface:         
-
-    br.com.eits.syncer.application.restful.ISyncResource
-    
-And must follow its contract. Example:
-
-    public class SyncService implements ISyncResource
-    {
-    	@Override
-    	public SyncData syncronize( SyncData remoteSyncData )
-    	{
-    	    //make your sync logic using the remoteSyncData.getEntities();
-    	    ...
-    	    final Map<RevisionType, List<Object>> localEntities = new HashMap<>();
-    	    //create a list of entities to sync, using the remoteSyncData.getRevision()
-    	    ...
-    	    final long serverRevision = //return the server last revision;
-    
-    	    return new SyncData( serverRevision, localEntities );
-    	}
-    }
-    
-And that''s it :)
-As developer, you just need to use Syncer.forEntity methods and the lib take care of rest. Considering the client battery, network etc.
-
-Enjoy!
+##1.0.1-RELEASE
+    - Added `DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE, false` to the ObjectMapper configuration.
