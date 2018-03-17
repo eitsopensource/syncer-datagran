@@ -93,11 +93,6 @@ public class SyncResourceConfiguration
         final String serviceUrl = this.syncURLs.get(serviceName);
         Objects.requireNonNull( serviceUrl, "An URL was not found to the service name: "+serviceName );
 
-        ISyncResource syncResource = SYNC_RESOURCE_CACHE.get( serviceUrl );
-
-        //if is not cached
-        if ( syncResource == null )
-        {
             final Feign.Builder builder = Feign.builder()
                     .logger( new Logger.ErrorLogger() )
                     .logLevel( this.logLevel )
@@ -122,12 +117,7 @@ public class SyncResourceConfiguration
                     }
                 });
             }
-
-            syncResource = builder.target( ISyncResource.class, serviceUrl );
-            SYNC_RESOURCE_CACHE.put( serviceUrl, syncResource );
-        }
-
-        return syncResource;
+        return builder.target( ISyncResource.class, serviceUrl );
     }
 
     /**

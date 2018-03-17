@@ -14,8 +14,9 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
-    <output url="file://$MODULE_DIR$/build/classes/main" />
-    <output-test url="file://$MODULE_DIR$/build/classes/test" />
+    <output url="file://$MODULE_DIR$/build/classes/java/main" />
+    <output-test url="file://$MODULE_DIR$/build/classes/java/test" />
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
@@ -26,12 +27,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="javax.ws.rs-api-2.0.1" level="project" />
-    <orderEntry type="library" exported="" name="jackson-annotations-2.6.0" level="project" />
-    <orderEntry type="library" exported="" name="hibernate-jpa-2.1-api-1.0.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="hibernate-validator-5.3.4.Final" level="project" />
-    <orderEntry type="library" exported="" name="validation-api-1.1.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="jboss-logging-3.3.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="classmate-1.3.1" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="javax.ws.rs-api-2.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="jackson-annotations-2.6.0" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="hibernate-jpa-2.1-api-1.0.0.Final" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="hibernate-validator-5.3.4.Final" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="validation-api-1.1.0.Final" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="jboss-logging-3.3.0.Final" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="classmate-1.3.1" level="project" />
   </component>
 </module>
